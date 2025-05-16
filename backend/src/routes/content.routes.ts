@@ -6,4 +6,5 @@ export const ContentRouter = Router();
 
 ContentRouter.post("/addcontent",authMiddleware,addContent);
 ContentRouter.get("/content",authMiddleware,contentDetails);
-ContentRouter.delete("/delete/:contentId",authMiddleware,deleteContent)
+ContentRouter.delete("/delete/:contentId",authMiddleware,deleteContent);
+
