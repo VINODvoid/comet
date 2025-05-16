@@ -48,3 +48,36 @@ export const addContent = async(req:AuthRequest,res:Response)=>{
         })
     }
 }
+export const contentDetails = async(req:AuthRequest,res:Response) => {
+    try {
+        const userid = req.UserID;
+        if(!userid)
+        {
+            res.status(401).json({
+                message:"UserId is not found"
+            })
+        }
+        const contentData = await Content.find({userId:userid})
+        res.status(200).json({
+            message:"Data fetched successfully",
+            data:contentData,
+        })
+        return;
+    } catch (error) {
+        res.status(401).json({
+            message:"Unable to fetch content",
+        })
+    }
+}
+
+export const deleteContent = async(req:AuthRequest,res:Response)=>
+{
+    try {
+        
+    } catch (error) {
+        res.status(401).json({
+            message:"Unable to delete the content"
+        })
+    }
+}
+

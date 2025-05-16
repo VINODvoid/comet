@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { addContent } from "../controller/content.controller";
+import { addContent,contentDetails } from "../controller/content.controller";
 import { authMiddleware } from "../middleware/auth.middleware";
 
 export const ContentRouter = Router();
 
-ContentRouter.post("/content",authMiddleware,addContent);
-
+ContentRouter.post("/addcontent",authMiddleware,addContent);
+ContentRouter.get("/content",authMiddleware,contentDetails);
