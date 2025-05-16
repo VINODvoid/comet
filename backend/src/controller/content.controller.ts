@@ -73,7 +73,32 @@ export const contentDetails = async(req:AuthRequest,res:Response) => {
 export const deleteContent = async(req:AuthRequest,res:Response)=>
 {
     try {
-        
+        const userid = req.UserID;
+        const contentId= req.params.contentId;
+
+        if(!userid || !contentId)
+        {
+            res.status(403).json({
+                message:"userId or contentId is missing"
+            })
+        }
+        const content = await Content.findOne({
+            userId:userid,
+            title:contentId,
+        });
+        if(!content)
+        {
+            res.status(501).json({
+                message:"Content not found"
+            })
+        }
+
+        await Content.findByIdAndDelete(content);
+        res.status(200).json({
+            message:"Content delete successfully"
+        });
+        return;
+
     } catch (error) {
         res.status(401).json({
             message:"Unable to delete the content"
