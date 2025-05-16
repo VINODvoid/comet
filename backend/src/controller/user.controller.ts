@@ -13,7 +13,7 @@ export const registerUser = async(req:Request,res:Response)=>{
         const {username,email,password} = validateData;
 
         // check whether all fields are filled or not 
-        if(! username || email || password)
+        if(!username || !email || !password)
         {
             res.status(400).json({
                 message:"All fields are required !"
