@@ -4,12 +4,13 @@ import { ConnectDb } from "./db";
 import cookieParser from "cookie-parser";
 import { UserRouter } from "./routes/user.routes";
 import { ContentRouter } from "./routes/content.routes";
-
+import cors from "cors"
 const app = express();
 dotenv.config();
 
 app.use(cookieParser());
 app.use(express.json());
+app.use(cors());
 
 
 app.use("/api/v1",UserRouter);
